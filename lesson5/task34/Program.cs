@@ -1,33 +1,36 @@
 ﻿
 
 // Задача 34: Задайте массив заполненный случайными 
-// положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
+// положительными трёхзначными числами. 
+// Напишите программу, которая покажет количество чётных чисел в массиве.
 // [345, 897, 568, 234] -> 2
 
-Random rnd = new Random();
+Console.Write("Введите количество элементов массива: ");
+int size = Convert.ToInt32(Console.ReadLine());
+int[] array = new int[size];
 
-int[] Array (int count)
+RandomNumber(array);
+Print(array);
 
+int count = 0;
+for (int x = 0; x < array.Length; x++)
+    if (array[x] % 2 == 0)
+        count++;
+
+Console.WriteLine($"всего чисел: {array.Length}, из них чётных: {count}");
+void RandomNumber(int[] array)
 {
-    int[] result = new int[count];
-    int i = 0;
-    for (i=0; i < count; i++)
+    for (int i = 0; i < array.Length; i++)
     {
-        result[i] = rnd.Next(100,999);
+        array[i] = new Random().Next(100, 999);
     }
-    return result;
 }
 
-int Schet (int[] Array)
+void Print(int[] array)
 {
-    int count = 0;
-    for(int i = 0; i < Array.Length; i++)
+    for (int i = 0; i < array.Length; i++)
     {
-        if(Array[i] % 2 == 0)
-        {
-            count = count + 1;
-        }
+        Console.WriteLine(array[i] + " ");
+
     }
-    return count;
 }
-Console.WriteLine(Schet(Array(10)));
